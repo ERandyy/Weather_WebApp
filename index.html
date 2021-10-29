@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+
+<body onload="weather.fetchWeather('Riga')">
+
+
+<div class="card">
+    
+    <div class="search">
+        
+        <input type="search" id="searchbox">
+        <input type="submit" name="srch" value="&#128269" onclick="weather.searchWeather()">
+    </div>
+
+
+
+<div class="City" ID="City"></div>
+<div class="Weathertype" ID="Weathertype"></div>
+<div class="Degrees" ID="Degrees">11&#176C</div>
+<table>
+    <tr> 
+    <th>Humidity</th>
+    <th>Wind</th>
+    <th>Pressure</th>
+</tr>
+<tr>
+   <td><div class="Humidity" id="Humidity">82</div></td> 
+   <td><div class="Wind" id="Wind">3km/h</div></td> 
+   <td> <div class="Pressure" id="Pressure">1000mbar</div> </td>
+</tr>
+
+  
+</table>
+
+</div>
+
+    <script src="app.js"></script>
+    
+</body>
+</html>

@@ -1,0 +1,17 @@
+h1 {
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: url("https://images.unsplash.com/photo-1487621167305-5d248087c724?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1632&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.card {
+  background-color: #5f5f5fb0;
+  padding: 30px;
+  border-radius: 30px;
+}
