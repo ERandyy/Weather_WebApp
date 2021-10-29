@@ -45,6 +45,4 @@ let weather = {
     var cityName = document.getElementById("searchbox").value;
     this.fetchWeather(cityName);
   },
-
-  // Testing out the Github 123
 };
