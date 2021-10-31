@@ -6,14 +6,11 @@ let weather = {
   // Fetches the weather, used api website and put in variables to change cities
   // also possible in the future to make buttons change
   // between metric,imperial systems.
+
   fetchWeather: function (getCity) {
     fetch(
-      "http://api.openweathermap.org/data/2.5/weather?q=" +
-        getCity +
-        "&appid=" +
-        this.apiKey +
-        "&units=" +
-        this.units[1] //default units set to metric
+      `http://api.openweathermap.org/data/2.5/weather?q=${getCity}&appid=${this.apiKey}&units=${this.units[1]}`
+      //default units set to metric
     )
       .then((Response) => Response.json())
       .then((Data) => this.displayWeather(Data));
@@ -35,7 +32,7 @@ let weather = {
     document.getElementById("Weathertype").innerHTML = main;
     document.getElementById("Degrees").innerHTML = Math.round(temp) + "&#176C";
     document.getElementById("Humidity").innerHTML = humidity + "%";
-    document.getElementById("Wind").innerHTML = speed;
+    document.getElementById("Wind").innerHTML = speed + " km/h";
     document.getElementById("Pressure").innerHTML = pressure;
   },
 
