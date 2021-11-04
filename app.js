@@ -1,5 +1,5 @@
 let weather = {
-  apiKey: "API",
+  apiKey: "88e1129e173a201ba18fd22b000720d3",
   // array of units, which are passed to fetch link
   units: ["standard", "metric", "imperial"],
 
@@ -41,5 +41,43 @@ let weather = {
   searchWeather: function () {
     var cityName = document.getElementById("searchbox").value;
     this.fetchWeather(cityName);
+  },
+};
+
+// Geolocation
+let map = {
+  fetchLocation: function (lat, lon) {
+    fetch(
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`
+    )
+      .then((Response) => Response.json())
+      .then((Data) => console.log(Data));
+  },
+
+  //This function displays the latitue and longitude using geolocation API
+  //Created new var that contains coord properties and display it on console
+  displayLocation: function () {
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+
+    function success(pos) {
+      var crd = pos.coords;
+
+      console.log("Success");
+      console.log("Your current coords:");
+      console.log(`Latitude: ${crd.latitude}`);
+      console.log(`Longitude: ${crd.longitude}`);
+
+      map.fetchLocation(crd.latitude, crd.longitude);
+    }
+
+    function error(err) {
+      console.log("Failed");
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
   },
 };
