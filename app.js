@@ -1,5 +1,5 @@
 let weather = {
-  apiKey: "88e1129e173a201ba18fd22b000720d3",
+  apiKey: "API",
   // array of units, which are passed to fetch link
   units: ["standard", "metric", "imperial"],
 
@@ -7,16 +7,23 @@ let weather = {
   // also possible in the future to make buttons change
   // between metric,imperial systems.
 
-  fetchWeather: function (getCity) {
+  fetchWeather: function (getCity) 
+  {
+    try{
     fetch(
       `http://api.openweathermap.org/data/2.5/weather?q=${getCity}&appid=${this.apiKey}&units=${this.units[1]}`
       //default units set to metric
     )
       .then((Response) => Response.json())
       .then((Data) => this.displayWeather(Data));
-  },
+  }
+  catch{console.log("ERROR in fetchWeather")}
+}
+  ,
 
   displayWeather: function (Data) {
+
+    try{
     // After fetching the weather, this function displays only certain
     //JSON properties of the API and logs them in console.
     const { name } = Data;
@@ -34,6 +41,9 @@ let weather = {
     document.getElementById("Humidity").innerHTML = humidity + "%";
     document.getElementById("Wind").innerHTML = speed + " km/h";
     document.getElementById("Pressure").innerHTML = pressure;
+    }
+    catch{console.log("ERROR in displayWeather")
+  console.log(Data)}
   },
 
   // Search weather, it gets the value of searchbox and
@@ -46,24 +56,23 @@ let weather = {
 
 // Geolocation
 let map = {
-  fetchLocation: function (lat, lon) {
-    fetch(
-      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`
-    )
-      .then((Response) => Response.json())
-      .then((Data) => console.log(Data));
-  },
+ 
+
+
+  
 
   //This function displays the latitue and longitude using geolocation API
   //Created new var that contains coord properties and display it on console
-  displayLocation: function () {
+  // Currently the default function upon loading the page
+  
+  currentCoords: function () { 
     var options = {
       enableHighAccuracy: true,
       timeout: 5000,
       maximumAge: 0,
     };
 
-    function success(pos) {
+    function success(pos) { // if succesful, logs the latitute and longitude
       var crd = pos.coords;
 
       console.log("Success");
@@ -71,13 +80,53 @@ let map = {
       console.log(`Latitude: ${crd.latitude}`);
       console.log(`Longitude: ${crd.longitude}`);
 
-      map.fetchLocation(crd.latitude, crd.longitude);
+      map.fetchLocation(crd.latitude, crd.longitude); //fetch function with coords as params
     }
 
     function error(err) {
       console.log("Failed");
+      weather.fetchWeather('Riga')
     }
 
     navigator.geolocation.getCurrentPosition(success, error, options);
   },
+
+  fetchLocation: function (lat, lon) {
+    fetch(
+      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`
+    )
+      .then((Response) => Response.json())
+      .then((Data) => this.displayLocation(Data));
+  },
+
+  displayLocation: function(Data)
+  {
+    var cityName=Data.address.city;
+    console.log(cityName);
+    
+    weather.fetchWeather(cityName);
+    
+
+    
+   
+  },
+
+
+
+
 };
+
+
+let darkmode =
+
+  {
+
+   buttonpressed: function myfunction()
+    {
+      var el = document.querySelector(".card")
+     
+    }
+
+
+  };
+
