@@ -1,5 +1,5 @@
 let weather = {
-  apiKey: "API",
+  apiKey: "API", 
   // array of units, which are passed to fetch link
   units: ["standard", "metric", "imperial"],
 
@@ -18,12 +18,13 @@ let weather = {
       .then((Data) => this.displayWeather(Data));
   }
   catch{console.log("ERROR in fetchWeather")}
-}
-  ,
+},
 
-  displayWeather: function (Data) {
 
-    try{
+setProperties: function(Data)
+{
+
+  try{
     // After fetching the weather, this function displays only certain
     //JSON properties of the API and logs them in console.
     const { name } = Data;
@@ -44,7 +45,31 @@ let weather = {
     }
     catch{console.log("ERROR in displayWeather")
   console.log(Data)}
-  },
+},
+
+  displayWeather: function (Data){
+
+    console.log("Finding..");
+    this.setProperties(Data);
+  
+  if(Data.cod=="404") 
+  // if Data returns 404 code, that city is not found, return county instead
+  //if that is not found, then state and so on..
+  {
+    console.log("Finding next location...")
+    
+    
+
+
+    
+
+  }
+},
+
+
+
+
+
 
   // Search weather, it gets the value of searchbox and
   //forwards the variable to fetchweather function
@@ -99,17 +124,39 @@ let map = {
       .then((Data) => this.displayLocation(Data));
   },
 
+
+  // Sometimes the location doesn't display due to city names of openstreetmap do not
+  // match on what can be found on openweather map
+  // city location was returned as "Malpils pagasts" instead of "Malpils". "Malpils" works, but if cut
+  //out the part of string after Malpils, it does same for differnet city names 
+  //where there is a name with space between.
+  // Works okay with larger cities, but has problem with small towns
+  //
   displayLocation: function(Data)
   {
-    var cityName=Data.address.city;
-    console.log(cityName);
+    const cityName=Data.address.city;
+    const county=Data.address.county;
+    const state=Data.address.state;
     
+    
+    console.log(cityName);
     weather.fetchWeather(cityName);
+    
+
+    fetchCounty(Data)
+    {
+    console.log(county);
+    weather.fetchWeather(county);
+    }
+
+
     
 
     
    
   },
+
+
 
 
 
