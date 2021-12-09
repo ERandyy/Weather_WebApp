@@ -38,19 +38,7 @@ td {
   text-align: center;
 }
 
-.dark-mode
-{
+.dark-mode {
   background-color: #3f3f3fb0;
   color: aliceblue;
-
 }
-
-.wheelcog
-{
-  margin-bottom: 0px;
-  margin-top: 0px;
-  font-size:40px;
-  justify-content:right;
-
-}
-
