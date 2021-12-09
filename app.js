@@ -59,11 +59,6 @@ let weather = {
       if (Data.cod == "404" || Data.cod == "400") {
         // if Data returns 404 code, that city is not found, return county instead
         //if that is not found, then state and so on..
-
-        //made a new function that is fetchcounty, but now if the county is not found
-        // it just goes on an infinite loop
-        // need to find a way to override fetchlocation and displaylocation
-        // to not duplicate code
         console.log("Finding next location...");
 
         map.fetchCounty(lastLatitude, lastLongitude);
