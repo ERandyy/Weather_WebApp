@@ -1,8 +1,8 @@
 h1 {
-  color: aliceblue;
+  color: black;
 }
 body {
-  color: aliceblue;
+  color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,10 +10,11 @@ body {
   background-image: url("https://images.unsplash.com/photo-1487621167305-5d248087c724?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1632&q=80");
   background-size: cover;
   background-repeat: no-repeat;
+  flex-direction: column;
 }
 
 .card {
-  background-color: #5f5f5fb0;
+  background-color: #e6e6e6b0;
   padding: 50px;
   border-radius: 30px;
 }
@@ -35,4 +36,9 @@ body {
 
 td {
   text-align: center;
+}
+
+.dark-mode {
+  background-color: #3f3f3fb0;
+  color: aliceblue;
 }
