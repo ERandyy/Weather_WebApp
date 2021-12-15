@@ -59,7 +59,10 @@ let weather = {
       if (Data.cod == "404" || Data.cod == "400") {
         // if Data returns 404 code, that city is not found, return county instead
         //if that is not found, then state and so on..
+<<<<<<< HEAD
 
+=======
+>>>>>>> caa5d9aec027755ceaab549320cf54163e6d0806
         console.log("Finding next location...");
 
         map.fetchCounty(lastLatitude, lastLongitude);
